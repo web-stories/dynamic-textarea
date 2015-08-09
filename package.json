@@ -1,0 +1,19 @@
+{
+  "name": "dynamic-textarea",
+  "version": "0.0.1",
+  "description": "A simple dynamic textarea decorator that just works without jQuery",
+  "main": "src/dynamic-textarea.js",
+  "keywords": [
+    "autogrow",
+    "textarea",
+    "dynamic",
+    "autosize",
+    "amd"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/web-stories/dynamic-textarea.git"
+  },
+  "author": "Fagner Brack",
+  "license": "MIT"
+}

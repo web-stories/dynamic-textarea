@@ -1,0 +1,7 @@
+{
+  "name": "dynamic-textarea",
+  "main": [
+    "src/dynamic-textarea.js"
+  ],
+  "ignore": []
+}
