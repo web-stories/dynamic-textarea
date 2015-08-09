@@ -13,7 +13,7 @@ It can also be loaded as an AMD module.
 
 # Usage
 
-Add the `data-dynamic` attribute to the `textarea` elements and they will magically grow to fit the content:
+Add the `data-dynamic` attribute to the `textarea` elements and they will magically grow to fit the content (even for dynamic added elements!):
 
 ```html
 <textarea data-dynamic></textarea>
