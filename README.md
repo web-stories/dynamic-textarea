@@ -20,3 +20,21 @@ Add the `data-dynamic` attribute to the `textarea` elements and they will magica
 ```html
 <textarea data-dynamic></textarea>
 ```
+
+# API
+
+The api is exposed only in AMD capable environments to prevent polluting the global scope unnecessarily.
+
+### .refresh()
+
+Update the height of all dynamic textareas relative to its content.
+
+**Example:**
+
+```javascript
+require( [ "dynamic-textarea" ], function( dynamicTextarea ) {
+	if ( someArbitraryEventHappens ) {
+		dynamicTextarea.refresh();
+	}
+});
+```
