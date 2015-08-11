@@ -5,6 +5,8 @@
   "main": "src/dynamic-textarea.js",
   "keywords": [
     "autogrow",
+    "grow",
+    "height",
     "textarea",
     "dynamic",
     "autosize",
