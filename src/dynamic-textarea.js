@@ -8,14 +8,14 @@
 (function( init ) {
 	if ( typeof define === "function" && define.amd ) {
 		define(function() {
-			init();
+			return init();
 		});
 	} else {
 		document.addEventListener( "DOMContentLoaded", init );
 	}
 }(function() {
 	var originalHeight;
-	function update( textarea ) {
+	function refresh( textarea ) {
 		originalHeight = originalHeight || window.getComputedStyle( textarea ).height;
 		textarea.style.overflow = "hidden";
 		textarea.style.height = originalHeight;
@@ -32,12 +32,18 @@
 			if ( !element.dataset.hasOwnProperty( "dynamic" ) ) {
 				return;
 			}
-			update( element );
+			refresh( element );
 		});
 	});
-	var i = 0;
-	var textareas = document.querySelectorAll( "[data-dynamic]" );
-	for ( ; i < textareas.length; i += 1 ) {
-		update( textareas[ i ] );
-	}
+	var api = {
+		refresh: function() {
+			var i = 0;
+			var textareas = document.querySelectorAll( "[data-dynamic]" );
+			for ( ; i < textareas.length; i += 1 ) {
+				refresh( textareas[ i ] );
+			}
+		}
+	};
+	api.refresh();
+	return api;
 }));
