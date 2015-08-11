@@ -7,9 +7,7 @@
  */
 (function( init ) {
 	if ( typeof define === "function" && define.amd ) {
-		define(function() {
-			return init();
-		});
+		define( init );
 	} else {
 		document.addEventListener( "DOMContentLoaded", init );
 	}
