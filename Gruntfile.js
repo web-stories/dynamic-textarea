@@ -5,7 +5,7 @@ module.exports = function( grunt ) {
 		qunit: {
 			all: {
 				options: {
-					urls: [ "http://127.0.0.1:9998/test" ]
+					urls: [ "http://127.0.0.1:9998/test/amd.html" ]
 				}
 			}
 		},
@@ -13,6 +13,13 @@ module.exports = function( grunt ) {
 			"build-qunit": {
 				options: {
 					port: 9998
+				}
+			},
+			tests: {
+				options: {
+					port: 10000,
+					open: "http://127.0.0.1:10000/test/",
+					keepalive: true
 				}
 			}
 		}
@@ -26,5 +33,5 @@ module.exports = function( grunt ) {
 	}
 
 	grunt.registerTask( "default", [ "test" ] );
-	grunt.registerTask( "test", [ "connect:build-qunit", "qunit" /* TODO */ ] );
+	grunt.registerTask( "test", [ "connect:build-qunit", "qunit" ] );
 };
