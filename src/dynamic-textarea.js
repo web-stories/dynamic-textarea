@@ -7,31 +7,43 @@
  */
 (function( init ) {
 	if ( typeof define === "function" && define.amd ) {
-		define( init );
+		define(function() {
+			return init();
+		});
 	} else {
-		init();
+		document.addEventListener( "DOMContentLoaded", init );
 	}
 }(function() {
-	var eventTypes = [ "keyup", "keydown" ];
-	function init() {
-		var originalHeight;
-		eventTypes.forEach(function( eventType ) {
-			document.addEventListener( eventType, function( event ) {
-				var element = event.target;
-				if ( element.nodeName !== "TEXTAREA" ) {
-					return;
-				}
-				if ( !element.dataset.hasOwnProperty( "dynamic" ) ) {
-					return;
-				}
-				originalHeight = originalHeight || window.getComputedStyle( element ).height;
-				element.style.overflow = "hidden";
-				element.style.height = originalHeight;
-				if ( element.scrollHeight > element.clientHeight ) {
-					element.style.height = element.scrollHeight + "px";
-				}
-			});
-		});
+	var originalHeight;
+	function refresh( textarea ) {
+		originalHeight = originalHeight || window.getComputedStyle( textarea ).height;
+		textarea.style.overflow = "hidden";
+		textarea.style.height = originalHeight;
+		if ( textarea.scrollHeight > textarea.clientHeight ) {
+			textarea.style.height = textarea.scrollHeight + "px";
+		}
 	};
-	document.addEventListener( "DOMContentLoaded", init );
+	[ "keyup", "keydown" ].forEach(function( eventType ) {
+		document.addEventListener( eventType, function( event ) {
+			var element = event.target;
+			if ( element.nodeName !== "TEXTAREA" ) {
+				return;
+			}
+			if ( !element.dataset.hasOwnProperty( "dynamic" ) ) {
+				return;
+			}
+			refresh( element );
+		});
+	});
+	var api = {
+		refresh: function() {
+			var i = 0;
+			var textareas = document.querySelectorAll( "[data-dynamic]" );
+			for ( ; i < textareas.length; i += 1 ) {
+				refresh( textareas[ i ] );
+			}
+		}
+	};
+	api.refresh();
+	return api;
 }));

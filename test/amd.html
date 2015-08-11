@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AMD Test</title>
+    <link rel="stylesheet" href="../node_modules/qunitjs/qunit/qunit.css">
+  </head>
+  <body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture">
+      <textarea id="amd-loaded" data-dynamic></textarea>
+    </div>
+    <script>
+    var require = {
+      paths: {
+        "qunit": [
+          "../node_modules/qunitjs/qunit/qunit"
+        ]
+      }
+    };
+    </script>
+    <script src="../node_modules/requirejs/require.js"></script>
+    <script>
+      require( [ "qunit" ], function( QUnit ) {
+        QUnit.start();
+        QUnit.module( "AMD" );
+        QUnit.test( "Module loading", function( assert ) {
+          assert.expect( 2 );
+          var done = assert.async();
+          require( [ "../src/dynamic-textarea" ], function( api ) {
+            var textarea = document.getElementById( "amd-loaded" );
+            assert.strictEqual( textarea.style.overflow, "hidden", "Should set overflow: hidden to prove the code is in effect" );
+            assert.ok( !!api.refresh, "Should load the refresh API" );
+            done();
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
