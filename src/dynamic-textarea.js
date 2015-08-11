@@ -25,10 +25,11 @@
 	};
 	[ "keyup", "keydown" ].forEach(function( eventType ) {
 		document.addEventListener( eventType, function( event ) {
-			if ( event.target.nodeName !== "TEXTAREA" ) {
+			var element = event.target;
+			if ( element.nodeName !== "TEXTAREA" ) {
 				return;
 			}
-			if ( !event.target.dataset.hasOwnProperty( "dynamic" ) ) {
+			if ( !element.dataset.hasOwnProperty( "dynamic" ) ) {
 				return;
 			}
 			update( element );
