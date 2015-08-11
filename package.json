@@ -1,6 +1,6 @@
 {
   "name": "dynamic-textarea",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple dynamic textarea decorator that just works without jQuery",
   "main": "src/dynamic-textarea.js",
   "keywords": [
