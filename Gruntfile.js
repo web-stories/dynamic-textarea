@@ -1,6 +1,6 @@
-"use strict";
-
 module.exports = function( grunt ) {
+	"use strict";
+
 	grunt.initConfig({
 		qunit: {
 			all: {
@@ -8,6 +8,14 @@ module.exports = function( grunt ) {
 					urls: [ "http://127.0.0.1:9998/test/amd.html" ]
 				}
 			}
+		},
+		jshint: {
+			options: {
+				jshintrc: true
+			},
+			grunt: "Gruntfile.js",
+			source: "src/**/*.js",
+			tests: [ "test/**/*.js" ]
 		},
 		connect: {
 			"build-qunit": {
@@ -33,5 +41,5 @@ module.exports = function( grunt ) {
 	}
 
 	grunt.registerTask( "default", [ "test" ] );
-	grunt.registerTask( "test", [ "connect:build-qunit", "qunit" ] );
+	grunt.registerTask( "test", [ "jshint", "connect:build-qunit", "qunit" ] );
 };

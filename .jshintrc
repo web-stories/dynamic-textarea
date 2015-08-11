@@ -1,0 +1,6 @@
+{
+	"eqeqeq": true,
+	"globals": {
+		"module": true
+	}
+}

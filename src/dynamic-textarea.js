@@ -20,7 +20,7 @@
 		if ( textarea.scrollHeight > textarea.clientHeight ) {
 			textarea.style.height = textarea.scrollHeight + "px";
 		}
-	};
+	}
 	[ "keyup", "keydown" ].forEach(function( eventType ) {
 		document.addEventListener( eventType, function( event ) {
 			var element = event.target;
