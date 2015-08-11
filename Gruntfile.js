@@ -17,6 +17,20 @@ module.exports = function( grunt ) {
 			source: "src/**/*.js",
 			tests: [ "test/**/*.js" ]
 		},
+		jscs: {
+			options: {
+				requireSemicolons: true,
+				requireSpaceAfterLineComment: true,
+				requireSpaceBeforeObjectValues: true,
+				validateIndentation: "\t",
+				validateLineBreaks: "LF",
+				validateQuoteMarks: true,
+				disallowTrailingWhitespace: true
+			},
+			grunt: "Gruntfile.js",
+			source: "src/**/*.js",
+			tests: [ "test/**/*.js" ]
+		},
 		connect: {
 			"build-qunit": {
 				options: {
@@ -41,5 +55,5 @@ module.exports = function( grunt ) {
 	}
 
 	grunt.registerTask( "default", [ "test" ] );
-	grunt.registerTask( "test", [ "jshint", "connect:build-qunit", "qunit" ] );
+	grunt.registerTask( "test", [ "jshint", "jscs", "connect:build-qunit", "qunit" ] );
 };
